@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Search Food</title>
+	<style type="text/css">
+		body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #242628;;
+  font-family: "Segoe UI","Segoe",Tahoma,Helvetica,Arial,sans-serif;
+  overflow-y: hidden;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.searchbar {
+    float: right;
+    background-color: #fff;
+    height: 50px;
+    color: #000;
+    padding: 6px 10px;
+    width: 120px;
+    border: none;
+    border-radius: 25px;p
+    margin-top: 1px;
+    margin-right: 8px;
+    font-family: "Segoe UI Light","Segoe UI","Segoe",Tahoma,Helvetica,Arial,sans-serif;
+    font-size: 1em;
+    font-weight: bold;
+    border-bottom: white solid 2px;
+    transition: 0.3s;
+}
+
+.searchbar::placeholder {
+    color: white;
+    font-family: "Segoe UI Light","Segoe UI","Segoe",Tahoma,Helvetica,Arial,sans-serif;
+    font-size: 1em;
+    font-weight: bold;
+    /* transition: 0.2s; */
+}
+
+.searchbar:focus {
+    width: 400px;
+    font-family: "Segoe UI Light","Segoe UI","Segoe",Tahoma,Helvetica,Arial,sans-serif;
+    font-size: 1em;
+    font-weight: bold;
+    transition: 0.3s;
+    /* Stops the input box from inheriting the styling from the inputs on the request form */
+    border-bottom: white solid 2px;
+    outline: none;
+}
+
+.btn-search {
+    cursor: pointer;
+    color: white;
+    text-decoration: none !important;
+    font-family: "Segoe UI Light","Segoe UI","Segoe",Tahoma,Helvetica,Arial,sans-serif;
+    font-size: 1.5em;
+    padding-top: 5px;
+    margin-right: 40px;
+}
+.button
+{
+	  display: block;
+  position: relative;
+  float: left;
+  width: 120px;
+  padding: 0;
+  margin: 10px 20px 10px 0;
+  font-weight: 600;
+  text-align: center;
+  line-height: 50px;
+  color: #FFF;
+  border-radius: 5px;
+  transition: all 0.2s ;
+   background: #00AE68;
+}
+	</style>
+
+
+	<script  src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/35E8B409-794B-B54D-9B74-ED05FC6A0AA2/main.js" charset="UTF-8"></script>
+</head>
+<body>
+<div class="container">
+  <input id="search" class="searchbar" type="text" placeholder="Search...">
+<button class="button" onclick="getrec(document.getElementById('search').value)">Search</button>
+  <div id="output"></div>
+<div id="nxtoutput"></div>
+<a href="" id="sourceLink"></a>
+</div>
+<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/35E8B409-794B-B54D-9B74-ED05FC6A0AA2/main.js" charset="UTF-8"></script><script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+
+<script>
+
+function getrec(q){
+$.ajax({
+
+url:"https://api.spoonacular.com/food/products/search?query="+q+"&number=2&apiKey=888d39fabae54065a5cddb2ab0f50166",
+success: function(res) {
+
+	let id=res.products[0].id;
+	document.getElementById("output").innerHTML="<br><h1>Product ID="+id+"</h1><br>"
+			
+
+	 $.ajax({
+
+		url:"https://api.spoonacular.com/food/products/"+id+"?apiKey=888d39fabae54065a5cddb2ab0f50166",
+		success:function(data){
+			document.getElementById("nxtoutput").innerHTML="<h1>Calories="+data.nutrition.calories+"</h1><h1>Fats="+data.nutrition.fat+"</h1><h1>Proteins="+data.nutrition.protein+"</h1>"
+			
+		
+		},
+		error: function () {
+        alert('Error!');
+    }
+		
+	});
+
+
+getsource(res.products[0].id)
+}
+});
+
+}
+
+</script>
+</body>
+</html>

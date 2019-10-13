@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		body{
+			text-align: center;
+			background:url(bg.png);
+		}
+		.container{
+			position: absolute;
+			top: 25%;
+			left: 40%;
+		}
+		input{
+			width: 350px;
+			height: 30px;
+			border-radius: 2px;		}
+
+	</style>
+	<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/35E8B409-794B-B54D-9B74-ED05FC6A0AA2/main.js" charset="UTF-8"></script>
+	<style type="text/css">
+		.effect-9 ~ .focus-border:before,
+.effect-9 ~ .focus-border:after{content: ""; position: absolute; top: 0; right: 0; width: 0; height: 2px; background-color: #3399FF; transition: 0.2s; transition-delay: 0.2s;}
+.effect-9 ~ .focus-border:after{top: auto; bottom: 0; right: auto; left: 0; transition-delay: 0.6s;}
+.effect-9 ~ .focus-border i:before,
+.effect-9 ~ .focus-border i:after{content: ""; position: absolute; top: 0; left: 0; width: 2px; height: 0; background-color: #3399FF; transition: 0.2s;}
+.effect-9 ~ .focus-border i:after{left: auto; right: 0; top: auto; bottom: 0; transition-delay: 0.4s;}
+.effect-9:focus ~ .focus-border:before,
+.effect-9:focus ~ .focus-border:after{width: 100%; transition: 0.2s; transition-delay: 0.6s;}
+.effect-9:focus ~ .focus-border:after{transition-delay: 0.2s;}
+.effect-9:focus ~ .focus-border i:before,
+.effect-9:focus ~ .focus-border i:after{height: 100%; transition: 0.2s;}
+.effect-9:focus ~ .focus-border i:after{transition-delay: 0.4s;}
+
+	</style>
+	<script type="text/javascript">
+		// JavaScript for label effects only
+	$(window).load(function(){
+		$(".col-3 input").val("");
+		
+		$(".input-effect input").focusout(function(){
+			if($(this).val() != ""){
+				$(this).addClass("has-content");
+			}else{
+				$(this).removeClass("has-content");
+			}
+		})
+	});
+	</script>
+</head>
+<body>
+<div class="container">
+<input  id="search"  class="effect-9"><span class="focus-border"></span>
+<button onclick="getrec(document.getElementById('search').value)">Search</button>
+<div id="output"></div>
+<div id="nxtoutput"></div>
+<a href="" id="sourceLink"></a>
+</div>
+
+
+
+<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/35E8B409-794B-B54D-9B74-ED05FC6A0AA2/main.js" charset="UTF-8"></script><script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+
+<script>
+
+function getrec(q){
+$.ajax({
+
+url:"https://api.spoonacular.com/food/products/search?query="+q+"&number=2&apiKey=4396e3b495d94d929a0e3619b4fb4191",
+success: function(res) {
+
+	let id=res.products[0].id;
+	document.getElementById("output").innerHTML="<h1>Product ID="+id+"</h1><h2></h2>"
+			
+
+	 $.ajax({
+
+		url:"https://api.spoonacular.com/food/products/"+id+"?apiKey=4396e3b495d94d929a0e3619b4fb4191",
+		success:function(data){
+			document.getElementById("nxtoutput").innerHTML="<h1>Calories="+data.nutrition.calories+"</h1><h1>Fats="+data.nutrition.fat+"</h1><h1>Proteins="+data.nutrition.protein+"</h1>"
+			
+		
+		},
+		error: function () {
+        alert('Error!');
+    }
+		
+	});
+
+
+getsource(res.products[0].id)
+}
+});
+
+}
+
+</script>
+</body>
+
+
+</html>
