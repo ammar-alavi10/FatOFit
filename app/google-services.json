@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "435989364946",
+    "firebase_url": "https://fatofit-23e47.firebaseio.com",
+    "project_id": "fatofit-23e47",
+    "storage_bucket": "fatofit-23e47.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:435989364946:android:ff9e865e1a3aa36927ad0b",
+        "android_client_info": {
+          "package_name": "com.hackmact.fatofit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "435989364946-lr38gmueebsdhs6etsff9l9o8lo0ovsi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3bfO7QPFcxHPiQ4lxbvg7pB4NDr2KFxQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "435989364946-lr38gmueebsdhs6etsff9l9o8lo0ovsi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

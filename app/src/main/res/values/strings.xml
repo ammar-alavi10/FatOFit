@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">FatOFit</string>
+    <string name="height">Height</string>
+    <string name="email">email</string>
+    <string name="password">password</string>
+    <string name="weight">Weight</string>
+    <string name="register">Register</string>
+    <string name="input_error_height">Height required</string>
+    <string name="input_error_email">email required</string>
+    <string name="input_error_password">password required</string>
+    <string name="input_error_weight">Weight required</string>
+    <string name="input_error_password_length">password should be atleast 6 characters long</string>
+    <string name="input_error_phone_invalid">enter a valid phone number</string>
+    <string name="registration_success">Registered Successfully</string>
+    <string name="input_error_email_invalid">enter a valid email</string>
+</resources>
